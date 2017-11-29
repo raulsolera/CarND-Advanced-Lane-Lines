@@ -13,7 +13,6 @@ The goals / steps of this project are the following:
 
 The code for this project can found in the Ipython Notebook `Advance_line_finding_project.ipynb` that is part of this repository.
 
-
 [//]: # (Image References)
 
 [image1]: ./report-images/calibration-example.png "Calibration example"
@@ -30,7 +29,7 @@ The code for this project can found in the Ipython Notebook `Advance_line_findin
 
 ### Camera Calibration
 
-#### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
+#### 1. Computed the camera matrix and distortion coefficients.
 
 Camera calibration is performed in the function `calibrate_camera()` in the 3rd code cell of the Ipython Notebook. The function goes through the following steps:
 1. Creates objective points for a 9x6 grid
@@ -56,6 +55,7 @@ For the color thresholding the following color spaces and channels were used:
 - HLS --> channel S
 - HSLuv --> channel L
 - Lab --> channel b
+
 As for the gradient thresholding the sobel transformation in x direction was applied on the S channel binary image (from HLS color space).
 The thresholds for each channel were adjusted after several tries to obtain a consistent mix and readjusted after processing the video. The following example show the transformation result:
 ![alt text][image3]
@@ -101,9 +101,9 @@ These calculation are done in functions `calc_curvature` and `calc_position` in 
 To make the calculation of the curvature an estimation of a 30 m long and 3.7 m wide is used. In the case of the position the 3.7 m of the lane wide is compared to distance between lines in the intersection of the line previously detected with the bottom of the image to estimate the pixel to meters conversion.
 
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### 6. Example image of line detection plotted back down onto the road.
 
-Finally the lane which that part of the image between the left and right image is colored in the original image. This is done in function `print_lane` in 18th cell of the Ipython Notebook.
+Finally that part of the image between the left and right lines will be the lane and it is colored in the original image. This is done in function `print_lane` in 18th cell of the Ipython Notebook.
 
 Firstly the space between lines in the warped image is colored, then this image is un-warped using the inverse of the M matrix and finally the line is super-imposed in the undistorted original image.The following image is an example of the result on a test image (position and curvature also printed):
 ![alt text][image9]
